@@ -59,22 +59,6 @@ int32 IO_LibInit(void)
         g_IO_LIB_LibData.EventTbl[ii].EventID = ii;
     }
     
-    /* Register the table with CFE */
-    iStatus = CFE_EVS_Register(g_IO_LIB_LibData.EventTbl, IO_LIB_EVT_CNT, 
-                               CFE_EVS_BINARY_FILTER);
-    if (iStatus != CFE_SUCCESS)
-    {
-        CFE_ES_WriteToSysLog("Failed to register with EVS (0x%08X)\n", iStatus);
-    }
-    else
-    {
-        CFE_ES_WriteToSysLog("IO Lib Initialized.  Version %d.%d.%d.%d\n",
-                           IO_LIB_MAJOR_VERSION,
-                           IO_LIB_MINOR_VERSION, 
-                           IO_LIB_REVISION, 
-                           IO_LIB_MISSION_REV);
-    }
-               
     return iStatus;
  
 }/* End CFS_LibInit */
